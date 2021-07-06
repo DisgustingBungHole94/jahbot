@@ -2,6 +2,7 @@ const Logger = require('./util/logger.js');
 const logger = new Logger('JahBot');
 
 const Discord = require('discord.js');
+const { token } = require('./resources/config.json');
 
 const TimeLog = require('./log.js');
 const Marry = require('./marry.js');
@@ -14,7 +15,6 @@ const Message = require('./util/message.js');
 
 module.exports = class JahBot {
     constructor() {
-        this.token = 'NzMwNTQ1MDYyOTk1Mjk2Mzc4.XwZDVw.uhQuHoVqLbEmUXO3qBM_ue8Nbag';
         this.prefix = ';;';
         
         this.client = new Discord.Client();
@@ -34,7 +34,7 @@ module.exports = class JahBot {
         this.fileRegistry.load();
         this.commandRegistry.load();
         
-        this.client.login(this.token);
+        this.client.login(token);
 
         this.client.once('ready', () => {
             logger.log('JahBot Discord service has started!');
@@ -76,7 +76,7 @@ module.exports = class JahBot {
                     this.soundPlayer.stop(message);
                     break;
                 default:
-                    Message.send(message.channel, 'THAT\'S NOT EVEN A COMMAND! DEEZ NUTS!');
+                    Message.send(message.channel, 'THAT\'S NOT EVEN A COMMAND! Create new commands [here](http://76.236.31.36/suite/apps/jahbot/index.php?page=commands.php)! DEEZ NUTS!');
                     break;
             }
                         

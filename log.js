@@ -111,7 +111,7 @@ module.exports = class Log {
                     return true;
                 }
                  
-                await displayUserList(message.channel, this.guilds.get(message.guild.id));
+                await displayUserList(message.channel, this.guilds.get(message.guild.id), message.guild.id);
             } else {
                 if (s[1].length < 4 || !s[1].startsWith('<@!')) {
                     Message.send(message.channel, 'The user could not actually be found, buddy! Deez nuts!');
@@ -167,7 +167,7 @@ function displayUser(channel, user, userInfo, isOnline) {
     msg.send(channel);
 }
 
-async function displayUserList(channel, guild) {
+async function displayUserList(channel, guild, guildId) {
     let users = new Array();
     guild.forEach((info, id) => {
         let userInfo = info;
@@ -195,6 +195,7 @@ async function displayUserList(channel, guild) {
     
     const msg = new Message.MultipageMessage({
         title: 'Discord Grooming Leaderboard',
+        url: 'http://76.236.31.36/suite/apps/jahbot/index.php?page=log.php?guild=' + guildId + '/',
         itemsPerPage: 5,
         displayType: 'titled',
         items: items

@@ -5,6 +5,7 @@ const defaults = {
     title: '',
     footer: '',
     author: '',
+    url: '',
     color: '#db4021',
     timeout: 60000,
     inline: false,
@@ -18,6 +19,7 @@ class Message {
         this.title = options.title || defaults.title;
         this.footer = options.footer || defaults.footer;
         this.author = options.author || defaults.author;
+        this.url = options.url || defaults.url;
         this.color = options.color || defaults.color;
         this.timeout = options.timeout || defaults.timeout;
         
@@ -28,6 +30,7 @@ class Message {
         if (this.title) this.message.setTitle(this.title);
         if (this.footer) this.message.setFooter(this.footer);
         if (this.author) this.message.setAuthor(this.author);
+        if (this.url) this.message.setURL(this.url);
         if (this.color) this.message.setColor(this.color);
     }
 
